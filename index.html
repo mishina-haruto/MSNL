@@ -1,0 +1,72 @@
+<!DOCRYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>MSNL</title>
+        <meta name="description" content="MSNLの処�?系">
+    
+    <!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="body">
+            <div id="header">
+                <h1><a href="MSNL.html"><img class="logo" src="images/logo.png" alt="MSNL"></a></h1>
+            </div>
+            <div id="main">
+                <div class="item sub_main">
+                    <div class="item" id="program">
+                        <div class="item_name">
+                            <h2>program</h2>
+                            <ul class="menu">
+                                    <a id="examples" href="javascript:void(0);">examples</a>
+                                    <ul>
+                                        <li><a href="#" onClick="onExampleButtonClick(1);">example1</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(2);">example2</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(3);">example3</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(4);">example4</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(5);">example5</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(6);">example6</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(7);">example7</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(8);">example8</a></li>
+                                        <li><a href="#" onClick="onExampleButtonClick(9);">example9</a></li>
+                                    </ul>
+                            </ul>
+                        </div>
+                        <div class="not_item_name">
+                            <textarea id="inputText"></textarea >
+                        </div>
+                    </div>
+                    <div class="item" id="buttonArea">
+                        <form class="button" id="run">
+                            <a href="#" class="btn_03" onclick="onRunButtonClick();">RUN</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="item sub_main">
+                    <div class="item" id="output">
+                        <div class="item_name">
+                            <h2>output</h2>
+                        </div>
+                        <div class="not_item_name">
+                            <textarea id="outputText" readonly></textarea >
+                        </div>
+                    </div>
+                    <div class="item" id="console">
+                        <div class="item_name">
+                            <h2>console</h2>
+                        </div>
+                        <div class="not_item_name">
+                            <textarea id="log" readonly></textarea >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="MSNL.js"></script>
+        <script src="examples.js"></script>
+    </body>
+</html>
