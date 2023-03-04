@@ -8,13 +8,14 @@
     <!-- CSS -->
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
         <div id="body">
             <div id="header">
-                <h1><a href="MSNL.html"><img class="logo" src="images/logo.png" alt="MSNL"></a></h1>
+                <h1><a href="index.html"><img class="logo" src="images/logo.png" alt="MSNL"></a></h1>
             </div>
             <div id="main">
                 <div class="item sub_main">
@@ -44,6 +45,15 @@
                         <form class="button" id="run">
                             <a href="#" class="btn_03" onclick="onRunButtonClick();">RUN</a>
                         </form>
+                        <form class="button" id="step">
+                            <a href="#" class="btn_03" onclick="onStepButtonClick();">STEP</a>
+                        </form>
+                        <form class="button" id="back">
+                            <a href="#" class="btn_03" onclick="onBackButtonClick();">BACK</a>
+                        </form>
+                        <form class="button" id="go">
+                            <a href="#" class="btn_03" onclick="onGoButtonClick();">GO</a>
+                        </form>
                     </div>
                 </div>
                 <div class="item sub_main">
@@ -61,6 +71,30 @@
                         </div>
                         <div class="not_item_name">
                             <textarea id="log" readonly></textarea >
+                        </div>
+                    </div>
+                    <div class="item" id="instruction">
+                        <div class="item_name">
+                            <h2>instruction</h2>
+                        </div>
+                        <div class="not_item_name">
+                            <textarea id="instructionText"></textarea >
+                        </div>
+                    </div>
+                    <div class="item" id="data">
+                        <div class="item_name">
+                            <h2>data</h2>
+                        </div>
+                        <div class="not_item_name">
+                            <div class="data_element">
+                                <textarea id="prevDataText" readonly></textarea >
+                            </div>
+                            <div id="arrow">
+                                <h1><img src="images/arrow.png" id="arrow_image" alt="arrow"></h1>
+                            </div>
+                            <div class="data_element">
+                                <textarea id="nextDataText" readonly></textarea >
+                            </div>
                         </div>
                     </div>
                 </div>

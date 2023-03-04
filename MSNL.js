@@ -1,17 +1,27 @@
+let examplesButton = document.getElementsByClassName("menu");
+let inputTextArea = document.getElementById("inputText");
+let outputTextArea = document.getElementById("outputText");
+let outputDiv = document.getElementById("output");
+let consoleDiv = document.getElementById("console");
+let instructionDiv = document.getElementById("instruction");
+let dataDiv = document.getElementById("data");
+let runButton = document.getElementById("run");
+let stepButton = document.getElementById("step");
+let backButton = document.getElementById("back");
+let goButton = document.getElementById("go");
+
 function onRunButtonClick(){
-    let input = document.getElementById("inputText");
-    let inputText = input.value;
-    let output = document.getElementById("outputText");
+    let inputText = inputTextArea.value;
     myConsole("program execute");
     variableList = [];
     let result = execRandom(inputText);
     if(!Boolean(result)){
-        output.style.border = "solid 3px red";
-        output.textContent = "";
+        outputTextArea.style.border = "solid 3px red";
+        outputTextArea.textContent = "";
         myConsole("failure finish");
     }else{
-        output.style.border = "solid 0px red";
-        output.textContent = outputData(result);
+        outputTextArea.style.border = "solid 0px red";
+        outputTextArea.textContent = outputData(result);
         myConsole("success finish");
     }
 }
@@ -19,6 +29,118 @@ function onRunButtonClick(){
 function onExampleButtonClick(exampleIndex){
     document.getElementById("inputText").value = examples[exampleIndex];
     myConsole("open example" + exampleIndex);
+}
+
+let instructionArray;
+let stepIndex;
+function onStepButtonClick(){
+    onRunButtonClick();
+    let input = document.getElementById("inputText");
+    let inputText = input.value;
+    let instruction = document.getElementById("instructionText");
+    let prevData = document.getElementById("prevDataText");
+    let nextData = document.getElementById("nextDataText");
+    variableList = [];
+    if(false!=execRandom(inputText) && dataLog.length>0){
+        examplesButton[0].style.visibility = "hidden";
+        inputTextArea.readOnly = true;
+        outputDiv.style.display = 'none';
+        consoleDiv.style.display = 'none';
+        instructionDiv.style.display = "block";
+        dataDiv.style.display = "block";
+        runButton.style.display = "none";
+        stepButton.style.display = "none";
+        backButton.style.display = "block";
+        goButton.style.display = "block";
+        let text = flatText(inputText);
+        text = lexicalAnalys(text);
+        text = parseVariableAndContext(text);
+        text = parseArithmeticOperation(text);
+        text = parseComparativeOperation(text);
+        text = parseGuard(text);
+        text = parseInstruction(text);
+        instructionArray = [];
+        for(let i=0;i<text.length;i++){
+            if("instruction"==text[i][0]){
+                let instructionText = "";
+                for(let j=1;j<text[i].length;j++){
+                    if("guard"==text[i][j][0]){
+                        let guardText = " && ";
+                        for(let k=1;k<text[i][j][1].length;k++){
+                            if("arithmetic operation"==text[i][j][1][k][0]){
+                                for(let l=1;l<text[i][j][1][k].length;l++){
+                                    guardText = guardText + text[i][j][1][k][l][1];
+                                }
+                            }else{
+                                guardText = guardText + text[i][j][1][k][1];
+                            }
+                        }
+                        instructionText = instructionText + guardText;
+                    }else if("arithmetic operation"==text[i][j][0]){
+                        for(let k=1;k<text[i][j].length;k++){
+                            instructionText = instructionText + text[i][j][k][1];
+                        }
+                    }else if("->"==text[i][j][1] || "-*>"==text[i][j][1]){
+                        instructionText = instructionText + " -> ";
+                    }else{
+                        instructionText = instructionText + text[i][j][1];
+                    }
+                }
+                instructionArray.push(instructionText);
+            }
+        }
+        stepIndex = 0;
+        instruction.textContent = instructionArray[dataLog[stepIndex][0]];
+        prevData.textContent = "";
+        nextData.textContent = outputData(dataLog[stepIndex][1]);
+    }
+}
+
+function onBackButtonClick(){
+    if(stepIndex==0){
+        examplesButton[0].style.visibility = "visible";
+        inputTextArea.readOnly = false;
+        outputDiv.style.display = "block";
+        consoleDiv.style.display = "block";
+        instructionDiv.style.display = "none";
+        dataDiv.style.display = "none";
+        runButton.style.display = "block";
+        stepButton.style.display = "block";
+        backButton.style.display = "none";
+        goButton.style.display = "none";
+    }else{
+        let instruction = document.getElementById("instructionText");
+        let prevData = document.getElementById("prevDataText");
+        let nextData = document.getElementById("nextDataText");
+        stepIndex--;
+        instruction.textContent = instructionArray[dataLog[stepIndex][0]];
+        prevData.textContent = outputData(dataLog[stepIndex-1][1]);
+        nextData.textContent = outputData(dataLog[stepIndex][1]);
+    }
+}
+
+function onGoButtonClick(){
+    if(stepIndex==dataLog.length-1){
+        examplesButton[0].style.visibility = "visible";
+        inputTextArea.readOnly = false;
+        outputDiv.style.display = "block";
+        consoleDiv.style.display = "block";
+        instructionDiv.style.display = "none";
+        dataDiv.style.display = "none";
+        runButton.style.display = "block";
+        stepButton.style.display = "block";
+        backButton.style.display = "none";
+        goButton.style.display = "none";
+        stepIndex = 0;
+    }else{
+        let instruction = document.getElementById("instructionText");
+        let prevData = document.getElementById("prevDataText");
+        let nextData = document.getElementById("nextDataText");
+        stepIndex++;
+        instruction.textContent = instructionArray[dataLog[stepIndex][0]];
+        prevData.textContent = outputData(dataLog[stepIndex-1][1]);
+        nextData.textContent = outputData(dataLog[stepIndex][1]);
+    }
 }
 
 let consoleText = "";
@@ -478,13 +600,16 @@ function parseWrapping(instructionList){
         newInstruction.push(instructionList[i][2]);
         let body = findWrapping(instructionList[i][3]);
         if(body.length>1 && wrappingHead.length>0){
-            body.push([true, ","]);
+            body.splice(1, 0, [true, ","]);
+            //body.push([true, ","]);
         }
-        body = body.concat(wrappingHead);
+        for(let j=wrappingHead.length-1;j>=0;j--){
+            body.splice(1, 0, wrappingHead[j]);
+        }
         if(body.length>1){
-            body.push([true, ","]);
+            body.splice(1, 0, [true, ","]);
         }
-        body.push(["context", "$$context"]);
+        body.splice(1, 0, ["context", "$$context"]);
         newInstruction.push(body);
         newInstructionList.push(newInstruction);
     }
@@ -1383,7 +1508,9 @@ function unwrap(data){
     }
 }
 
+let dataLog = [];
 function execRandom(inputText){
+    dataLog = [];
     let text = flatText(inputText);
     text = lexicalAnalys(text);
     let [instructionControl, instructionList] = parse(text);
@@ -1407,6 +1534,7 @@ function execRandom(inputText){
                 }else{
                     data = newData;
                     state = "skip";
+                    dataLog.push([instructionNum, data]);
                 }
             }else if("*("==instructionControl[0] || "loop("==instructionControl[0]){
                 if("*("==instructionControl[0]){
@@ -1841,4 +1969,37 @@ function outputWrapping(data){
     }
     outputText = outputText + ">";
     return outputText;
+}
+
+function outputInstruction(instruction){
+    if(4!=instruction.length){
+        console.log("error: incorrect formatting of instruction");
+    }
+    let instructionText = "";
+    let head = [];
+    for(let i=0;i<instruction[1].length;i++){
+        if("context"!=instruction[1][i][0]){
+            head.push(instruction[1][i]);
+        }
+    }
+    let guard = instruction[2];
+    let body = [];
+    for(let i=0;i<instruction[3].length;i++){
+        if("context"!=instruction[3][i][0]){
+            body.push(instruction[3][i]);
+        }
+    }
+    instructionText = instructionText + outputData(head);
+    instructionText = instructionText + " " + outputGuard(guard);
+    instructionText = instructionText + " -> ";
+    instructionText = instructionText + outputData(body);
+    return instructionText;
+}
+
+function outputGuard(guard){
+    let guardText = "&& ";
+    for(let i=1;i<guard[1].length;i++){
+        guardText = guardText + guard[1][i][1];
+    }
+    return guardText;
 }
