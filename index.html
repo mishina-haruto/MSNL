@@ -18,12 +18,12 @@
                 <h1><a href="index.html"><img class="logo" src="images/logo.png" alt="MSNL"></a></h1>
             </div>
             <div id="main">
-                <div class="item sub_main">
-                    <div class="item" id="program">
+                <div class="item" id="program">
+                    <div class="not_console" id="program_not_console">
                         <div class="item_name">
                             <h2>program</h2>
-                            <ul class="menu">
-                                    <a id="examples" href="javascript:void(0);">examples</a>
+                            <ul id="examples">
+                                    <a id="examples_button" href="javascript:void(0);">examples</a>
                                     <ul>
                                         <li><a href="#" onClick="onExampleButtonClick(1);">example1</a></li>
                                         <li><a href="#" onClick="onExampleButtonClick(2);">example2</a></li>
@@ -38,69 +38,69 @@
                             </ul>
                         </div>
                         <div class="not_item_name">
-                            <textarea id="inputText"></textarea >
+                            <textarea class="textarea" id="program_textarea"></textarea >
                         </div>
                     </div>
-                    <div class="item" id="buttonArea">
-                        <form class="button" id="run">
-                            <a href="#" class="btn_03" onclick="onRunButtonClick();">RUN</a>
-                        </form>
-                        <form class="button" id="step">
-                            <a href="#" class="btn_03" onclick="onStepButtonClick();">STEP</a>
-                        </form>
-                        <form class="button" id="back">
-                            <a href="#" class="btn_03" onclick="onBackButtonClick();">BACK</a>
-                        </form>
-                        <form class="button" id="go">
-                            <a href="#" class="btn_03" onclick="onGoButtonClick();">GO</a>
-                        </form>
+                    <div class="console">
+                        <p class="console_paragraph" id="program_console"></p>
                     </div>
                 </div>
-                <div class="item sub_main">
-                    <div class="item" id="output">
+                <div class="item" id="output">
+                    <div class="not_console" id="output_not_console">
                         <div class="item_name">
                             <h2>output</h2>
                         </div>
                         <div class="not_item_name">
-                            <textarea id="outputText" readonly></textarea >
+                            <textarea class="textarea" id="output_textarea" readonly></textarea >
                         </div>
                     </div>
-                    <div class="item" id="console">
+                    <div class="console">
+                        <p class="console_paragraph" id="output_console"></p>
+                    </div>
+                    <div class="buttonArea">
+                        <form class="button1_form" id="run_button">
+                            <a href="#" class="button1" onclick="onRunButtonClick();">RUN</a>
+                        </form>
+                        <form class="button1_form" id="step_button">
+                            <a href="#" class="button1" onclick="onStepButtonClick();">STEP</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="item" id="step">
+                    <div class="not_console" id="step_not_console">
                         <div class="item_name">
-                            <h2>console</h2>
+                            <h2>step</h2>
                         </div>
-                        <div class="not_item_name">
-                            <textarea id="log" readonly></textarea >
+                        <div class="not_item_name" id="step_not_item_name">
+                            <div class="data">
+                                <textarea class="textarea" id="prev_data_textarea" readonly></textarea>
+                            </div>
+                            <div id="instruction">
+                                <p id="instruction_paragraph"></p>
+                            </div>
+                            <div class="data">
+                                <textarea class="textarea" id="next_data_textarea" readonly></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="item" id="instruction">
-                        <div class="item_name">
-                            <h2>instruction</h2>
-                        </div>
-                        <div class="not_item_name">
-                            <textarea id="instructionText"></textarea >
-                        </div>
+                    <div class="console">
+                        <p class="console_paragraph" id="step_console"></p>
                     </div>
-                    <div class="item" id="data">
-                        <div class="item_name">
-                            <h2>data</h2>
-                        </div>
-                        <div class="not_item_name">
-                            <div class="data_element">
-                                <textarea id="prevDataText" readonly></textarea >
-                            </div>
-                            <div id="arrow">
-                                <h1><img src="images/arrow.png" id="arrow_image" alt="arrow"></h1>
-                            </div>
-                            <div class="data_element">
-                                <textarea id="nextDataText" readonly></textarea >
-                            </div>
-                        </div>
+                    <div class="buttonArea">
+                        <form class="button1_form" id="back_button">
+                            <a href="#" class="button1" onclick="onBackButtonClick();">BACK</a>
+                        </form>
+                        <form class="button1_form" id="go_button">
+                            <a href="#" class="button1" onclick="onGoButtonClick();">GO</a>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="MSNL.js"></script>
+        <script src="peg-0.10.0.min.js"></script>
+        <script src="parserText.js"></script>
+        <script src="arithmeticCalculatorText.js"></script>
         <script src="examples.js"></script>
+        <script src="MSNL.js"></script>
     </body>
 </html>
