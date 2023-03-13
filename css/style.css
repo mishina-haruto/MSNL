@@ -18,7 +18,6 @@ img {
 
 /* --- MSNL --- */
 #body {
-    background-color: aliceblue;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,19 +32,17 @@ img {
     height: 100%;
 }
 
-#title {
-    color: whitesmoke;
-    padding: 5px;
-}
-
 #main {
     height: calc(100% - 65px);
     display: flex;
     flex-direction: row;
+    background-color: #D9E5FF;
 }
 
 .item {
-    border: solid 1px gray;
+    height: 100%;
+    width: 50%;
+    padding: 10px;
 }
 
 .sub_main {
@@ -54,56 +51,16 @@ img {
     flex-direction: column;
 }
 
-#program {
-    height: calc(100% - 80px);
+.not_console {
+    border: solid 3px #000055;
 }
 
-.pull_down_menu {
-    color: red;
-}
-
-#buttonArea {
-    height: 80px;
-    display: flex;
-    justify-content: space-around;
-    background-color: #D9E5FF;
-}
-
-#output {
-    height: 70%;
-    display: block;
-}
-
-#console {
-    height: 30%;
-    display: block;
-}
-
-#instruction {
-    height: 130px;
-    display: none;
-}
-
-#data {
-    height: calc(100% - 130px);
-    display: none;
-    background-color: #D9E5FF;
-}
-
-.data_element {
-    height: calc(46% - 10px);
-    border: solid 2px gray;
-    margin: 5px;
-}
-
-#arrow {
-    height: 8%;
-    display: flex;
-    justify-content: center;
-}
-
-#arrow_image {
-    height: 100%;
+.console {
+    display: table;      
+    height: 50px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .item_name {
@@ -119,99 +76,84 @@ img {
     height: calc(100% - 50px);
 }
 
-textarea {
+.textarea {
     width: 100%;
     height: 100%;
     resize: none;
     padding: 1%;
     background-color: aliceblue;
-}
-
-#inputText, #outputText, #instructionText, #prevDataText, #nextDataText {
     font-size: 1.5rem;
     font-family: "Roboto Mono", "Lucida Console", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
 }
 
-#instructionText {
-    width: 100%;
-    padding: 18px;
-}
-
-#log {
-    line-height: 1rem;
-    font-family: "Lucida Console", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
-}
-
-#id {
+.console_paragraph {
+    display: table-cell; 
+    height: 50px;
+    padding-left: 10px;
+    background-color: #D9E5FF;
+    border-radius: 15px;
     font-size: 1rem;
+    overflow-wrap: normal;
+    vertical-align: middle;
 }
 
-.button {
-    width: 30%;
+.buttonArea {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
 }
 
-#run {
-    display: block;
+.button1_form {
+    width: 200px;
 }
 
-#step {
-    display: block;
+a.button1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 200px;
+    position: relative;
+    background: #228bc8;
+    border: 1px solid #228bc8;
+    border-radius: 30px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-align: left;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+a.button1:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    margin-top: -6px;
+}
+a.button1:hover {
+    background: #fff;
+    color: #228bc8;
+}
+a.button1:hover:before {
+    border-top: 2px solid #228bc8;
+    border-right: 2px solid #228bc8;
 }
 
-#back {
-    display: none;
-}
-
-#go {
-    display: none;
-}
-
-a.btn_03 {
-margin: 15px;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 50px;
-position: relative;
-background: #228bc8;
-border: 1px solid #228bc8;
-border-radius: 30px;
-box-sizing: border-box;
-padding: 0 45px 0 25px;
-color: #fff;
-font-size: 16px;
-letter-spacing: 0.1em;
-line-height: 1.3;
-text-align: left;
-text-decoration: none;
-transition-duration: 0.3s;
-}
-a.btn_03:before {
-content: '';
-width: 8px;
-height: 8px;
-border: 0;
-border-top: 2px solid #fff;
-border-right: 2px solid #fff;
-transform: rotate(45deg);
-position: absolute;
-top: 50%;
-right: 25px;
-margin-top: -6px;
-}
-a.btn_03:hover {
-background: #fff;
-color: #228bc8;
-}
-a.btn_03:hover:before {
-border-top: 2px solid #228bc8;
-border-right: 2px solid #228bc8;
+#examples_button {
+    color: #000055;
 }
 
 #examples {
-    color: #000055;
-}
-.menu {
     visibility: visible;
 	list-style-type:none;
 	display:inline-block;
@@ -222,10 +164,10 @@ border-right: 2px solid #228bc8;
     padding: 5px;
     width: 85px;
 }
-.menu > ul {
+#examples > ul {
 	display:none;
 }
-.menu:hover ul {
+#examples:hover ul {
 	display:block;
 	position:absolute;
     margin-top: 15px;
@@ -238,4 +180,78 @@ border-right: 2px solid #228bc8;
     width: 83px;
     background: #EEEEEE;
     color: red;
+}
+
+#program_textarea {
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+#program_not_console {
+    height: calc(100% - 50px);
+}
+
+#output {
+    display: block;
+}
+
+#output_not_console {
+    height: calc(100% - 120px);
+}
+
+#run_button {
+    visibility: hidden;
+}
+
+#step_button {
+    visibility: hidden;
+}
+
+#step {
+    display: none;
+}
+
+#step_not_console {
+    height: calc(100% - 120px);
+}
+
+#step_not_item_name {
+    background-color: aliceblue;
+}
+
+.data {
+    height: calc((100% - 50px)/2);
+    padding: 5px;
+}
+
+#instruction {
+    display: table; 
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#prev_data_textarea {
+    background-color: #e6e6fa;
+    border: 1px solid #000055;
+    font-size: 1.2rem;
+}
+
+#instruction_paragraph {
+    display: table-cell; 
+    height: 50px;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family: "Roboto Mono", "Lucida Console", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    color: black;
+    overflow-wrap: normal;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#next_data_textarea {
+    background-color: #e6e6fa;
+    border: 1px solid #000055;
+    font-size: 1.2rem;
 }
