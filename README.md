@@ -10,4 +10,4 @@ The name MSNL is derived from Mulitset, Sequence, Nest, Layer and Mishina Langua
 
 ## Getting Started
 
-Open [index.html](index.html) in your browser.
+Visit [here](https://mishina-haruto.github.io/MSNL/).
