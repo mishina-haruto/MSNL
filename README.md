@@ -24,7 +24,7 @@ Try this at https://mishina-haruto.github.io/MSNL/.
 
 | File                 | Description    |
 | -------------------- | -------------- |
-| [index](/index.html) | Format the GUI |
+| [index.html](/index.html) | Format the GUI |
 
 [/js](js) : Javascript files
 
@@ -36,11 +36,11 @@ Try this at https://mishina-haruto.github.io/MSNL/.
 | [arithmeticCalculatorText.js](js/arithmeticCalculatorText.js) | Calculate arithmetic operations. (Give to [peg-0.10.0.js](js/peg-0.10.0.min.js).) |
 | [examples.js](js/examples.js)                                 | Examples of MSNL programs.                                                        |
 
-[/css](js) : css files
+[/css](css) : css files
 
 | File                 | Description                   |
 | -------------------- | ----------------------------- |
-| [css](css/style.css) | Decorate [index](/index.html) |
+| [style.css](css/style.css) | Decorate [index.html](/index.html) |
 
 
 [/img](img) : images
