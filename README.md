@@ -1,6 +1,6 @@
 # A Prototype Language Processor of MSNL
 
-**This processing system was implemented for the demonstration of the poster presentation at PPL 2023.**
+**An online processing system of MSNL. This system was implemented for the demonstration of the poster presentation at PPL 2023.**
 
 ![the poster presentation at PPL 2023](img/mishina_ppl2023.png)
 
@@ -10,4 +10,42 @@ The name MSNL is derived from Mulitset, Sequence, Nest, Layer and Mishina Langua
 
 ## Getting Started
 
-Visit [here](https://mishina-haruto.github.io/MSNL/).
+Try this at https://mishina-haruto.github.io/MSNL/.
+
+## How to use
+
+1.Write MSNL program in Input area. &emsp; or &emsp; Select an example.
+
+2.Press RUN or STEP button.
+
+## Directory Structures
+
+[/](.) : root
+
+| File                 | Description    |
+| -------------------- | -------------- |
+| [index](/index.html) | Format the GUI |
+
+[/js](js) : Javascript files
+
+| File                                                          | Description                                                                       |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [main.js](js/main.js)                                         | The main program.                                                                 |
+| [peg-0.10.0.js](js/peg-0.10.0.min.js)                         | Parsing Expression Grammar in Javascirpt.(MIT License)                            |
+| [parserText.js](js/parserText.js)                             | Syntax of MSNL programs. (Give to [peg-0.10.0.js](js/peg-0.10.0.min.js).)         |
+| [arithmeticCalculatorText.js](js/arithmeticCalculatorText.js) | Calculate arithmetic operations. (Give to [peg-0.10.0.js](js/peg-0.10.0.min.js).) |
+| [examples.js](js/examples.js)                                 | Examples of MSNL programs.                                                        |
+
+[/css](js) : css files
+
+| File                 | Description                   |
+| -------------------- | ----------------------------- |
+| [css](css/style.css) | Decorate [index](/index.html) |
+
+
+[/img](img) : images
+
+| File                                           | Description                       |
+| ---------------------------------------------- | --------------------------------- |
+| [logo.png](img/logo.png)                       | Image of logo.                    |
+| [mishina_ppl2023.png](img/mishina_ppl2023.png) | Image of the poster presentation. |
