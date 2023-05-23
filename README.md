@@ -47,5 +47,5 @@ Try this at https://mishina-haruto.github.io/MSNL/.
 
 | File                                           | Description                       |
 | ---------------------------------------------- | --------------------------------- |
-| [logo.png](img/logo.png)                       | Image of logo.                    |
+| [logo.png](img/logo.png)                       | Image of the logo of MSNL.        |
 | [mishina_ppl2023.png](img/mishina_ppl2023.png) | Image of the poster presentation. |
