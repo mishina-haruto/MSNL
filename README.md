@@ -14,9 +14,9 @@ Try this at https://mishina-haruto.github.io/MSNL/.
 
 ## How to use
 
-1.Write MSNL program in the program area. &emsp; or &emsp; Select an example.
+1. Write MSNL program in the program area. &emsp; or &emsp; Select an example.
 
-2.Press RUN or STEP button.
+2. Press RUN or STEP button.
 
 ## Directory Structures
 
