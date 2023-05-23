@@ -14,7 +14,7 @@ Try this at https://mishina-haruto.github.io/MSNL/.
 
 ## How to use
 
-1.Write MSNL program in Input area. &emsp; or &emsp; Select an example.
+1.Write MSNL program in program area. &emsp; or &emsp; Select an example.
 
 2.Press RUN or STEP button.
 
